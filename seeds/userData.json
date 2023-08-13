@@ -1,0 +1,18 @@
+[
+    {
+      "name": "Aragorn",
+      "email": "aragorn@example.com",
+      "password": "aragorn123"
+    },
+    {
+      "name": "Gandalf",
+      "email": "gandalf@example.com",
+      "password": "gandalf123"
+    },
+    {
+      "name": "Frodo",
+      "email": "frodo@example.com",
+      "password": "frodo123"
+    }
+
+]

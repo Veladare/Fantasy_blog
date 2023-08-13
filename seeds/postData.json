@@ -1,0 +1,17 @@
+[
+    {
+      "title": "Aragorn's Journey",
+      "text": "Aragorn, son of Arathorn, also known as Elessar, Isildur's Heir, and more, embarked on a heroic journey to reclaim the throne of Gondor.",
+      "user_id": 1
+    },
+    {
+      "title": "Gandalf's Wisdom",
+      "text": "Gandalf the Grey, later known as Gandalf the White, was a wise wizard who played a crucial role in guiding the Fellowship of the Ring and defeating Sauron.",
+      "user_id": 2
+    },
+    {
+      "title": "Frodo's Quest",
+      "text": "Frodo Baggins, a hobbit from the Shire, carried the One Ring to Mount Doom to destroy it and save Middle-earth from Sauron's tyranny.",
+      "user_id": 3
+    }
+]

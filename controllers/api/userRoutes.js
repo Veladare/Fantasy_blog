@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+//this is the route I believe http://localhost:3001/api/users/
+
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);

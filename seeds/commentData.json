@@ -1,0 +1,17 @@
+[
+    {
+      "comment_text": "Aragorn is my favorite character!",
+      "user_id": 1,
+      "post_id": 1
+    },
+    {
+      "comment_text": "Gandalf's wisdom is unparalleled.",
+      "user_id": 2,
+      "post_id": 1
+    },
+    {
+      "comment_text": "Frodo's journey was filled with challenges.",
+      "user_id": 3,
+      "post_id": 2
+    }
+]
