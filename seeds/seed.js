@@ -18,13 +18,16 @@ const seedDatabase = async () => {
     // Insert post seed data
     const posts = await Post.bulkCreate(postData);
 
-    // Insert comment seed data
-    for (const comment of commentData) {
-      const post = posts[Math.floor(Math.random() * posts.length)]; // Pick a random post
+    // Insert comment seed data sequentially
+    for (let i = 0; i < commentData.length; i++) {
+      const comment = commentData[i];
+      const userIndex = i % users.length; 
+      const postIndex = i % posts.length; 
+
       await Comment.create({
         ...comment,
-        user_id: users[Math.floor(Math.random() * users.length)].id, // Pick a random user
-        post_id: post.id,
+        user_id: users[userIndex].id,
+        post_id: posts[postIndex].id,
       });
     }
 
