@@ -1,0 +1,8 @@
+<main class="container mt-5">
+  <article>
+    <h1>{{title}}</h1>
+    <p>Created by: {{user.name}} | Date: {{format_date createdAt}}</p>
+    <p>Response {{#each comments}} {{comment_text}} {{/each}}</p>
+    <p>{{text}}</p>
+  </article>
+</main>

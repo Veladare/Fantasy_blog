@@ -2,6 +2,15 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 //this is the route I believe http://localhost:3001/api/users/
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.findAll();
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 router.post('/', async (req, res) => {
   try {
@@ -25,7 +34,7 @@ router.post('/login', async (req, res) => {
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'invalid email or password, please try again' });
+        .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
@@ -34,7 +43,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'invalid email or password, please try again' });
+        .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 

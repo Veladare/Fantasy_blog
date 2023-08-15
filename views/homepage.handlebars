@@ -1,0 +1,18 @@
+<h1>Welcome to the Homepage</h1>
+{{#if logged_in}}
+    <p>Welcome, you are logged in!</p>
+{{else}}
+    <p>Please log in to see more content.</p>
+{{/if}}
+
+{{#each allPosts}}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"><a href="/post/{{id}}">{{title}}</a></h5>
+        <p class="card-text">By: {{user.name}}</p>
+        <p class="card-text">{{text}}</p>
+        <p class="card-text">{{format_date createdAt}}</p>
+        <p class="card-text">Response: {{#each comments}} {{comment_text}} {{/each}}
+    </div>
+</div>
+{{/each}}
