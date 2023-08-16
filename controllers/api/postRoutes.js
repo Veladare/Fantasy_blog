@@ -17,15 +17,12 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const newPost = await Post.create({
-      title: req.body.title,
-      text: req.body.text,
-      user_id: req.body.user_id,
+      ...req.body,
+      user_id: req.session.user_id,
     });
-
-    res.status(201).json(newPost);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error creating post' });
+    res.status(200).json(newPost);
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 

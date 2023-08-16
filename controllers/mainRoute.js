@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
           model: User,
         },
         {
-          //it invokes comments for some reason even though there is no comments model
+  
           model: Comment,
         },
       ],
@@ -36,10 +36,13 @@ router.get("/post/:id", async (req, res) => {
        
     const postData = await Post.findByPk(req.params.id, {
       include: [
-        { model: User, attributes: ["name"] },
+        { model: 
+          User, attributes: ["name"] 
+        },
         {
           model: Comment,
-          include: [{ model: User, attributes: ["name"] }],
+          include: 
+          [{ model: User, attributes: ["name"] }],
         },
       ],
     });
@@ -55,7 +58,53 @@ router.get("/post/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+router.get("/dashboard", async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      where: { user_id: req.session.user_id },
+      include: [{ model: User, attributes: ["name"] }],
+    });
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    res.render("dashboard", {
+      posts,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/newpost", (req, res) => {
+  if (req.session.logged_in) {
+    res.render("newpost");
+    return;
+  }
+  res.redirect("/login");
+});
+router.get("/editpost/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        { model: User, attributes: ["name"] },
+        {
+          model: Comment,
+          include: [{ model: User, attributes: ["name"] }],
+        },
+      ],
+    });
+
+    const post = postData.get({ plain: true });
+
+    res.render("editpost", {
+      ...post,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 router.all("/login", (req, res) => {
   if (req.session.logged_in) {
@@ -65,3 +114,5 @@ router.all("/login", (req, res) => {
 
   res.render("login");
 });
+
+module.exports = router;

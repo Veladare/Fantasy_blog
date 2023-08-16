@@ -5,18 +5,18 @@ const { Post, User, Comment } = require('../../models');
 
 //I believe this is the route http://localhost:3001/api/comment/
 // Create a new comment
-router.post('/', async (req, res) => {
-  try {
+router.post("/", async (req, res) => {
+  try {    
+    
     const newComment = await Comment.create({
-      comment_text: req.body.comment_text,
-      user_id: req.body.user_id,
-      post_id: req.body.post_id,
+      ...req.body,
+      user_id: req.session.user_id,
     });
-
-    res.status(201).json(newComment);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error creating comment' });
+    
+    res.status(200).json(newComment);
+  } catch (err) {
+    
+    res.status(400).json(err);
   }
 });
 

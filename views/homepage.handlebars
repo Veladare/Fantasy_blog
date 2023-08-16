@@ -1,8 +1,8 @@
 <h1>Welcome to the Homepage</h1>
 {{#if logged_in}}
-    <p>Welcome, you are logged in!</p>
+    <h5>Welcome!</h5>
 {{else}}
-    <p>Please log in to see more content.</p>
+    <h5>Login to join the conversation!</h5>
 {{/if}}
 
 {{#each allPosts}}
@@ -12,7 +12,7 @@
         <p class="card-text">By: {{user.name}}</p>
         <p class="card-text">{{text}}</p>
         <p class="card-text">{{format_date createdAt}}</p>
-        <p class="card-text">Response: {{#each comments}} {{comment_text}} {{/each}}
+        <p class="card-text">Responses: {{#each comments}} <ul>{{comment_text}}</ul>{{/each}}
     </div>
 </div>
 {{/each}}
