@@ -1,4 +1,4 @@
-<h1>Welcome to the Homepage</h1>
+<h1>Homepage</h1>
 {{#if logged_in}}
     <h5>Welcome!</h5>
 {{else}}
@@ -12,7 +12,6 @@
         <p class="card-text">By: {{user.name}}</p>
         <p class="card-text">{{text}}</p>
         <p class="card-text">{{format_date createdAt}}</p>
-        <p class="card-text">Responses: {{#each comments}} <ul>{{comment_text}}</ul>{{/each}}
     </div>
 </div>
 {{/each}}

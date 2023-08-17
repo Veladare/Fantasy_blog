@@ -4,11 +4,12 @@
       <h1 class="mb-4">Dashboard</h1>
     </div>
   </div>
-  <h1 class="mb-4">your contributions to the conversation:</h1>
+  <h2>Hello</h2>
+  <h3 class="mb-4">your contributions to the conversation:</h3>
   {{#each posts}}
     <div class="post-container post mb-3">
       <h2><a href="/post/{{id}}" class="text-decoration-none text-reset">{{title}}</a></h2>
-      <p>Created by: {{user.name}} | Date: {{format_date createdAt}}</p>
+      <p>Created by: You, {{user.name}} | Date: {{format_date createdAt}}</p>
       <a href="/editpost/{{id}}" class="btn btn-warning">Edit Post</a>
       <button class="btn btn-danger delete-post" data-post-id="{{id}}">Delete</button>
     </div>

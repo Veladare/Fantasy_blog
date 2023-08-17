@@ -31,7 +31,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/post/:id", async (req, res) => {
+router.get("/post/:id", withAuth, async (req, res) => {
   try {
        
     const postData = await Post.findByPk(req.params.id, {
@@ -58,7 +58,7 @@ router.get("/post/:id", async (req, res) => {
   }
 });
 
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: { user_id: req.session.user_id },
@@ -75,14 +75,13 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
-router.get("/newpost", (req, res) => {
-  if (req.session.logged_in) {
-    res.render("newpost");
-    return;
-  }
-  res.redirect("/login");
+router.get("/newpost", withAuth, async (req, res) => {
+  res.render("newpost", {
+      logged_in: req.session.logged_in
+  });
 });
-router.get("/editpost/:id", async (req, res) => {
+
+router.get("/editpost/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
