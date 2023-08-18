@@ -84,26 +84,18 @@ router.get("/newpost", withAuth, async (req, res) => {
 router.get("/editpost/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      include: [
-        { model: User, attributes: ["name"] },
-        {
-          model: Comment,
-          include: [{ model: User, attributes: ["name"] }],
-        },
-      ],
+      include: [{ model: User, attributes: ["name"] }, 
+      { model: Comment, include: [User] }],
     });
-
-    const post = postData.get({ plain: true });
 
     res.render("editpost", {
-      ...post,
+      ...postData.get({ plain: true }),
       logged_in: req.session.logged_in,
     });
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
-
 
 router.all("/login", (req, res) => {
   if (req.session.logged_in) {
