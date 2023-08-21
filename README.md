@@ -30,7 +30,7 @@ install dotenv, express, mysql2, and sequlize, bcrypt, express-sessions in the t
 
 Users can use the webite by click the link bellow 
 
-[deployed website](https://drive.google.com/file/d/1UScBMpg7q43ril_odKMFG5avePl86YXq/view)
+[deployed website](https://mvc-fantasyblog-5e70d599a3dc.herokuapp.com/)
 
 If they wish to look at the code, after installing depedencies, start the server using server.js in the terminal.
 
@@ -44,4 +44,4 @@ Please refer to the LICENSE in the repo.
 
 ## Test
 
-[deployed website](https://drive.google.com/file/d/1UScBMpg7q43ril_odKMFG5avePl86YXq/view)
+[deployed website](https://mvc-fantasyblog-5e70d599a3dc.herokuapp.com/)
